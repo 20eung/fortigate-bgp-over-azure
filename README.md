@@ -8,8 +8,8 @@
 
 <table>
 <tr>
-  <td>FortiGate#1</td>
-  <td>FortiGate#2</td>
+  <td>FortiGate #1</td>
+  <td>FortiGate #2</td>
 </tr>
 <tr>
   <td>
@@ -50,8 +50,8 @@ end
 
 <table>
 <tr>
-  <td>FortiGate#1</td>
-  <td>FortiGate#2</td>
+  <td>FortiGate #1</td>
+  <td>FortiGate #2</td>
 </tr>
 
 <tr>
@@ -209,8 +209,8 @@ end
 
 <table>
 <tr>
-  <td>FortiGate#1</td>
-  <td>FortiGate#2</td>
+  <td>FortiGate #1</td>
+  <td>FortiGate #2</td>
 </tr>
 <tr>
   <td>
@@ -251,8 +251,8 @@ end
 
 <table>
 <tr>
-  <td>FortiGate#1</td>
-  <td>FortiGate#2</td>
+  <td>FortiGate #1</td>
+  <td>FortiGate #2</td>
 </tr>
 <tr>
   <td>
@@ -324,8 +324,8 @@ end
 
 <table>
 <tr>
-  <td>FortiGate#1</td>
-  <td>FortiGate#2</td>
+  <td>FortiGate #1</td>
+  <td>FortiGate #2</td>
 </tr>
 <tr>
   <td>
@@ -392,8 +392,8 @@ end
 
 <table>
 <tr>
-  <td>FortiGate#1</td>
-  <td>FortiGate#2</td>
+  <td>FortiGate #1</td>
+  <td>FortiGate #2</td>
 </tr>
 <tr>
   <td>
@@ -460,6 +460,8 @@ config router bgp
     end
 end
 ```
+
+  </td>
 </tr>
 </table>
 
@@ -468,8 +470,8 @@ end
 
 <table>
 <tr>
-  <td>FortiGate#1</td>
-  <td>FortiGate#2</td>
+  <td>FortiGate #1</td>
+  <td>FortiGate #2</td>
 </tr>
 <tr>
   <td>
