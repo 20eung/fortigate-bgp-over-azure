@@ -66,7 +66,7 @@ config vpn ipsec phase1-interface
     set peertype any
     set net-device disable
     set proposal aes256-sha1
-    set pdp on-idle
+    set dpd on-idle
     set dhgrp 2
     set remote-gw 3.1.1.1
     set psksecret PreSharedKey
@@ -178,6 +178,7 @@ config system interface
     set ip 2.2.2.1 255.255.255.255
     set allowaccess ping
     set type tunnel
+    set tcp-mss 1350
     set remote-ip 2.2.2.3 255.255.255.248
     set interface "wan2"
   next
@@ -292,8 +293,8 @@ end
 ```
 config firewall policy
     edit 0
-        set name "vlan10-to-azvpn"
-        set srcintf "vlan10"
+        set name "internal1-to-azvpn"
+        set srcintf "internal1"
         set dstintf "azvpn1" "azvpn2"
         set srcaddr "all"
         set dstaddr "all"
@@ -303,9 +304,9 @@ config firewall policy
         set logtraffic all
     next
     edit 0
-        set name "azvpn_to_vlan10"
+        set name "azvpn-to-internal1"
         set srcintf "azvpn1" "azvpn2"
-        set dstintf "vlan10"
+        set dstintf "internal1"
         set srcaddr "all"
         set dstaddr "all"
         set action accept
@@ -432,17 +433,18 @@ end
 
 ```
 config router bgp
-    set as 65001
+    set as 65010
     set router-id 10.10.0.1
     set ebgp-multipath enable
+    set graceful-restart enable
     config neighbor
-        edit "3.1.1.1"
+        edit "10.232.213.12"
             set ebgp-enforce-multihop enable
             set soft-reconfiguration enable
             set distribute-list-out "tunnel1"
             set remote-as 65515
         next
-        edit "3.1.2.1"
+        edit "10.232.213.13"
             set ebgp-enforce-multihop enable
             set soft-reconfiguration enable
             set distribute-list-out "tunnel2"
