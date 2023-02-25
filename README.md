@@ -619,7 +619,7 @@ config router bgp
     end
     config network
         edit 3
-            set prefix 10.10.20.0 255.255.255.0
+            set prefix 10.20.0.0 255.255.255.0
         next
     end
 end
