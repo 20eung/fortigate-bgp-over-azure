@@ -134,7 +134,7 @@ config system interface
     set allowaccess ping
     set type tunnel
     set tcp-mss 1350
-    set remote-ip 2.2.1.4 255.255.255.252
+    set remote-ip 2.2.1.4 255.255.255.248
     set interface "wan1"
   next
 end
@@ -221,7 +221,7 @@ config system interface
     set ip 2.2.2.2 255.255.255.255
     set allowaccess ping
     set type tunnel
-    set remote-ip 2.2.2.4 255.255.255.252
+    set remote-ip 2.2.2.4 255.255.255.248
     set interface "wan1"
   next
 end
@@ -265,6 +265,13 @@ end
 
 ```
 config system interface
+    edit "internal1"
+        set vdom "root"
+        set ip 10.20.0.1 255.255.255.0
+        set allowaccess ping
+        set status down
+        set type physical
+    next
   edit "vlan10"
 set vdom "root"
     set device-identification enable
@@ -314,7 +321,7 @@ config firewall policy
         set service "ALL"
         set logtraffic all
     next
-end 
+end
 ```
 
   </td>
@@ -323,8 +330,8 @@ end
 ```
 config firewall policy
     edit 0
-        set name "vlan20-to-azvpn"
-        set srcintf "vlan20"
+        set name "internal1-to-azvpn"
+        set srcintf "internal1"
         set dstintf "azvpn1" "azvpn2"
         set srcaddr "all"
         set dstaddr "all"
@@ -334,9 +341,9 @@ config firewall policy
         set logtraffic all
     next
     edit 0
-        set name "azvpn_to_vlan20"
+        set name "azvpn-to-internal1"
         set srcintf "azvpn1" "azvpn2"
-        set dstintf "vlan20"
+        set dstintf "internal1"
         set srcaddr "all"
         set dstaddr "all"
         set action accept
@@ -344,7 +351,7 @@ config firewall policy
         set service "ALL"
         set logtraffic all
     next
-end 
+end
 ```
 
   </td>
@@ -467,17 +474,18 @@ end
 
 ```
 config router bgp
-    set as 65001
+    set as 65020
     set router-id 10.20.0.1
     set ebgp-multipath enable
+    set graceful-restart enable
     config neighbor
-        edit "3.1.1.2"
+        edit "10.232.213.12"
             set ebgp-enforce-multihop enable
             set soft-reconfiguration enable
             set distribute-list-out "tunnel1"
             set remote-as 65515
         next
-        edit "3.1.2.2"
+        edit "10.232.213.13"
             set ebgp-enforce-multihop enable
             set soft-reconfiguration enable
             set distribute-list-out "tunnel2"
