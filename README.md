@@ -577,13 +577,13 @@ config router bgp
             set ebgp-enforce-multihop enable
             set soft-reconfiguration enable
             set distribute-list-out "vlan10"
-            set remote-as 65520
+            set remote-as 65020
         next
         edit "2.2.2.2"
             set ebgp-enforce-multihop enable
             set soft-reconfiguration enable
             set distribute-list-out "vlan10"
-            set remote-as 65520
+            set remote-as 65020
         next
     end
     config network
@@ -608,13 +608,13 @@ config router bgp
             set ebgp-enforce-multihop enable
             set soft-reconfiguration enable
             set distribute-list-out "vlan10"
-            set remote-as 65510
+            set remote-as 65010
         next
         edit "2.2.2.1"
             set ebgp-enforce-multihop enable
             set soft-reconfiguration enable
             set distribute-list-out "vlan10"
-            set remote-as 65510
+            set remote-as 65010
         next
     end
     config network
