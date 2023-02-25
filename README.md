@@ -632,3 +632,38 @@ end
 ## 9. Azure Virtual Hub Routing Table 확인
 
 ![Azure Virtual Hub Routing Table](./img/azure-vhub-rtb.jpg "Azure Virtual Hub Routing Table")
+
+
+## 10. FortiGate Routing Table 확인
+
+<table>
+<tr>
+  <td>FortiGate #1</td>
+  <td>FortiGate #2</td>
+</tr>
+<tr>
+  <td>
+
+![FortiGate #1 Routing Table](./img/fg1-routing-tbl.png "FortiGate #1 Routing Table")
+
+  </td>
+  <td>
+
+![FortiGate #2 Routing Table](./img/fg2-routing-tbl.png "FortiGate #1 Routing Table")
+
+  </td>
+</tr>
+
+<tr>
+  <td>
+
+![FortiGate #1 Ping Test](./img/fg1-to-fg2-ping.png "FortiGate #1 Ping Test")
+
+  </td>
+  <td>
+
+![FortiGate #2 Ping Test](./img/fg2-to-fg1-ping.png "FortiGate #2 Ping Test")
+
+  </td>
+</tr>
+</table>
