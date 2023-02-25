@@ -1,6 +1,8 @@
 # 포티게이트 장비에서 BGP over Cloud 구현(Azure Cloud)
 
 ## 구성도
+<img src="./img/diagram.png" width=100% alt="Network Diagram">
+
 ![Diagram](./img/diagram.png "Diagram")
 
 
