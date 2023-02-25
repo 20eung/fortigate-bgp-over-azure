@@ -657,6 +657,7 @@ end
 <tr>
   <td>
 
+<img src="./img/fg1-to-fg2-ping.png" width=100%>
 ![FortiGate #1 Ping Test](./img/fg1-to-fg2-ping.png "FortiGate #1 Ping Test")
 
   </td>
