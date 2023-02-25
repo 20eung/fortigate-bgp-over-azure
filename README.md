@@ -358,8 +358,55 @@ end
 </table>
 
 
+## 5. Static 라우팅 설정
 
-## 5. BGP 광고용 ACL 설정
+<table>
+<tr>
+  <td>FortiGate #1</td>
+  <td>FortiGate #2</td>
+</tr>
+<tr>
+  <td>
+
+```
+config router static
+    edit 0
+        set dst 10.232.213.12 255.255.255.255
+        set device "azvpn1"
+        set comment "AzVpnBgp1"
+    next
+    edit 0
+        set dst 10.232.213.13 255.255.255.255
+        set device "azvpn2"
+        set comment "AzVpnBgp2"
+    next
+end
+```
+
+  </td>
+  <td>
+
+```
+config router static
+    edit 0
+        set dst 10.232.213.12 255.255.255.255
+        set device "azvpn1"
+        set comment "AzVpnBgp1"
+    next
+    edit 0
+        set dst 10.232.213.13 255.255.255.255
+        set device "azvpn2"
+        set comment "AzVpnBgp2"
+    next
+end
+```
+
+  </td>
+</tr>
+</table>
+
+
+## 6. BGP 광고용 ACL 설정
 
 <table>
 <tr>
@@ -414,7 +461,7 @@ config router access-list
             next
         end
     next
-    edit "vlan20"
+    edit "vlan10"
         config rule
             edit 1
                 set prefix 10.20.0.0 255.255.255.0
@@ -429,7 +476,7 @@ end
 </table>
 
 
-## 6. Azure VPN BGP 설정
+## 7. Azure VPN BGP 설정
 
 <table>
 <tr>
@@ -509,7 +556,7 @@ end
 </table>
 
 
-## 7. Remote FortiGate VPN BGP 설정
+## 8. Remote FortiGate VPN BGP 설정
 
 <table>
 <tr>
@@ -560,13 +607,13 @@ config router bgp
         edit "2.2.1.1"
             set ebgp-enforce-multihop enable
             set soft-reconfiguration enable
-            set distribute-list-out "vlan20"
+            set distribute-list-out "vlan10"
             set remote-as 65510
         next
         edit "2.2.2.1"
             set ebgp-enforce-multihop enable
             set soft-reconfiguration enable
-            set distribute-list-out "vlan20"
+            set distribute-list-out "vlan10"
             set remote-as 65510
         next
     end
