@@ -643,28 +643,19 @@ end
 </tr>
 <tr>
   <td>
-
-![FortiGate #1 Routing Table](./img/fg1-routing-tbl.png "FortiGate #1 Routing Table")
-
+    <img src="./img/fg1-routing-tbl.png" width=100% alt="FortiGate #1 Routing Table">
   </td>
   <td>
-
-![FortiGate #2 Routing Table](./img/fg2-routing-tbl.png "FortiGate #1 Routing Table")
-
+    <img src="./img/fg2-routing-tbl.png" width=100% alt="FortiGate #2 Routing Table">
   </td>
 </tr>
 
 <tr>
   <td>
-
-<img src="./img/fg1-to-fg2-ping.png" width=100%>
-![FortiGate #1 Ping Test](./img/fg1-to-fg2-ping.png "FortiGate #1 Ping Test")
-
+    <img src="./img/fg1-to-fg2-ping.png" width=100% alt="FortiGate #1 Ping Test">
   </td>
   <td>
-
-![FortiGate #2 Ping Test](./img/fg2-to-fg1-ping.png "FortiGate #2 Ping Test")
-
+    <img src="./img/fg2-to-fg1-ping.png" width=100% alt="FortiGate #2 Ping Test">
   </td>
 </tr>
 </table>
