@@ -269,11 +269,10 @@ config system interface
         set vdom "root"
         set ip 10.20.0.1 255.255.255.0
         set allowaccess ping
-        set status down
         set type physical
     next
   edit "vlan10"
-set vdom "root"
+    set vdom "root"
     set device-identification enable
     set role lan
     set interface "internal1"
@@ -377,9 +376,6 @@ config router access-list
             edit 1
                 set prefix 2.2.1.1 255.255.255.255
             next
-            edit 2
-                set prefix 10.10.0.0 255.255.255.0
-            next
         end
     next
     edit "tunnel2"
@@ -387,7 +383,11 @@ config router access-list
             edit 1
                 set prefix 2.2.2.1 255.255.255.255
             next
-            edit 2
+        end
+    next
+    edit "vlan10"
+        config rule
+            edit 1
                 set prefix 10.10.0.0 255.255.255.0
             next
         end
@@ -405,9 +405,6 @@ config router access-list
             edit 1
                 set prefix 2.2.1.2 255.255.255.255
             next
-            edit 2
-                set prefix 10.20.0.0 255.255.255.0
-            next
         end
     next
     edit "tunnel2"
@@ -415,7 +412,11 @@ config router access-list
             edit 1
                 set prefix 2.2.2.2 255.255.255.255
             next
-            edit 2
+        end
+    next
+    edit "vlan20"
+        config rule
+            edit 1
                 set prefix 10.20.0.0 255.255.255.0
             next
         end
@@ -520,26 +521,27 @@ end
 
 ```
 config router bgp
-    set as 65001
+    set as 65010
     set router-id 10.10.0.1
     set ebgp-multipath enable
+    set graceful-restart enable
     config neighbor
         edit "2.2.1.2"
             set ebgp-enforce-multihop enable
             set soft-reconfiguration enable
-            set distribute-list-out "tunnel1"
-            set remote-as 65515
+            set distribute-list-out "vlan10"
+            set remote-as 65520
         next
         edit "2.2.2.2"
             set ebgp-enforce-multihop enable
             set soft-reconfiguration enable
-            set distribute-list-out "tunnel2"
-            set remote-as 65515
+            set distribute-list-out "vlan10"
+            set remote-as 65520
         next
     end
     config network
-        edit 1
-            set prefix 10.10.10.0 255.255.255.0
+        edit 3
+            set prefix 10.10.0.0 255.255.255.0
         next
     end
 end
@@ -550,25 +552,26 @@ end
 
 ```
 config router bgp
-    set as 65001
+    set as 65020
     set router-id 10.20.0.1
     set ebgp-multipath enable
+    set graceful-restart enable
     config neighbor
         edit "2.2.1.1"
             set ebgp-enforce-multihop enable
             set soft-reconfiguration enable
-            set distribute-list-out "tunnel1"
-            set remote-as 65515
+            set distribute-list-out "vlan20"
+            set remote-as 65510
         next
         edit "2.2.2.1"
             set ebgp-enforce-multihop enable
             set soft-reconfiguration enable
-            set distribute-list-out "tunnel2"
-            set remote-as 65515
+            set distribute-list-out "vlan20"
+            set remote-as 65510
         next
     end
     config network
-        edit 1
+        edit 3
             set prefix 10.10.20.0 255.255.255.0
         next
     end
