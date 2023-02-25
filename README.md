@@ -628,3 +628,7 @@ end
   </td>
 </tr>
 </table>
+
+## 9. Azure Virtual Hub Routing Table 확인
+
+![Azure Virtual Hub Routing Table](./img/azure-vhub-rtb.jpg "Azure Virtual Hub Routing Table")
