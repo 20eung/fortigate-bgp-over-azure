@@ -16,7 +16,7 @@
 
 ```
 config system interface
-  edit "wan1"
+  edit "wan2"
     set vdom "root"
     set ip 1.1.1.1 255.255.255.0
     set allowaccess ping fgfm
@@ -60,12 +60,17 @@ end
 ```
 config vpn ipsec phase1-interface
   edit "azvpn1"
-    set interface "wan1"
+    set interface "wan2"
+    set ike-version 2
+    set keylife 28800
     set peertype any
     set net-device disable
     set proposal aes256-sha1
+    set pdp on-idle
+    set dhgrp 2
     set remote-gw 3.1.1.1
     set psksecret PreSharedKey
+    set dpd-retryinterval 10
   next
 end
 
@@ -73,7 +78,9 @@ config vpn ipsec phase2-interface
   edit "azvpn1"
     set phase1name "azvpn1"
     set proposal aes256-sha1
+    set dhgrp 2
     set auto-negotiate enable
+    set keylifeseconds 27000
   next
 end
 
@@ -84,8 +91,8 @@ config system interface
     set allowaccess ping
     set type tunnel
     set tcp-mss 1350
-    set remote-ip 2.2.1.3 255.255.255.252
-    set interface "wan1"
+    set remote-ip 2.2.1.3 255.255.255.248
+    set interface "wan2"
   next
 end
 ```
@@ -97,11 +104,16 @@ end
 config vpn ipsec phase1-interface
   edit "azvpn1"
     set interface "wan1"
+    set ike-version 2
+    set keylife 28800
     set peertype any
     set net-device disable
     set proposal aes256-sha1
+    set dpd on-idle
+    set dhgrp 2
     set remote-gw 3.1.1.2
     set psksecret PreSharedKey
+    set dpd-retryinterval 10
   next
 end
 
@@ -109,7 +121,9 @@ config vpn ipsec phase2-interface
   edit "azvpn1"
     set phase1name "azvpn1"
     set proposal aes256-sha1
+    set dhgrp 2
     set auto-negotiate enable
+    set keylifeseconds 27000
   next
 end
 
@@ -135,12 +149,17 @@ end
 ```
 config vpn ipsec phase1-interface
   edit "azvpn2"
-    set interface "wan1"
+    set interface "wan2"
+    set ike-version 2
+    set keylife 28800
     set peertype any
     set net-device disable
     set proposal aes256-sha1
+    set dpd on-idle
+    set dhgrp 2
     set remote-gw 3.1.2.1
     set psksecret PreSharedKey
+    set dpd-retryinterval 10
   next
 end
 
@@ -148,7 +167,9 @@ config vpn ipsec phase2-interface
   edit "azvpn2"
     set phase1name "azvpn2"
     set proposal aes256-sha1
+    set dhgrp 2
     set auto-negotiate enable
+    set keylifeseconds 27000
   next
 end
 
@@ -158,8 +179,8 @@ config system interface
     set ip 2.2.2.1 255.255.255.255
     set allowaccess ping
     set type tunnel
-    set remote-ip 2.2.2.3 255.255.255.252
-    set interface "wan1"
+    set remote-ip 2.2.2.3 255.255.255.248
+    set interface "wan2"
   next
 end
 ```
@@ -171,11 +192,16 @@ end
 config vpn ipsec phase1-interface
   edit "azvpn2"
     set interface "wan1"
+    set ike-version 2
+    set keylife 28800
     set peertype any
     set net-device disable
     set proposal aes256-sha1
+    set dpd on-idle
+    set dhgrp 2
     set remote-gw 3.1.2.2
     set psksecret PreSharedKey
+    set dpd-retryinterval 10
   next
 end
 
@@ -183,7 +209,9 @@ config vpn ipsec phase2-interface
   edit "azvpn2"
     set phase1name "azvpn2"
     set proposal aes256-sha1
+    set dhgrp 2
     set auto-negotiate enable
+    set keylifeseconds 27000
   next
 end
 
@@ -217,6 +245,12 @@ end
 
 ```
 config system interface
+  edit "internal1"
+    set vdom "root"
+    set ip 10.10.0.1 255.255.255.0
+    set allowaccess ping
+    set type physical
+  next
   edit "vlan10"
     set vdom "root"
     set device-identification enable
@@ -233,7 +267,7 @@ end
 ```
 config system interface
   edit "vlan10"
-    set vdom "root"
+set vdom "root"
     set device-identification enable
     set role lan
     set interface "internal1"
