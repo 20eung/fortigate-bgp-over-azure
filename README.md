@@ -3,9 +3,6 @@
 ## 구성도
 <img src="./img/diagram.png" width=100% alt="Network Diagram">
 
-![Diagram](./img/diagram.png "Diagram")
-
-
 ## 1. WAN 인터페이스 설정
 
 <table>
