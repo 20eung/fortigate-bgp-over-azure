@@ -32,7 +32,7 @@ end
 config system interface
   edit "wan1"
     set vdom "root"
-    set ip 1.1.1.2 255.255.255.0
+    set ip 1.1.2.2 255.255.255.0
     set allowaccess ping fgfm
     set type physical
     set role wan
