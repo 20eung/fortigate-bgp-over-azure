@@ -110,7 +110,7 @@ config vpn ipsec phase1-interface
     set proposal aes256-sha1
     set dpd on-idle
     set dhgrp 2
-    set remote-gw 3.1.1.2
+    set remote-gw 3.1.2.1
     set psksecret PreSharedKey
     set dpd-retryinterval 10
   next
